@@ -67,6 +67,11 @@ namespace Veiculos.Controllers
             {
                 var veiculo = _veiculoDomain.BuscarPorId(id);
 
+                if (veiculo == null)
+                {
+                    return NotFound();
+                }
+
                 return Ok(veiculo);
             }
             catch (Exception e)

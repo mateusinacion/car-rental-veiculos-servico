@@ -8,10 +8,12 @@ namespace Servicos
     public class VeiculoDomain
     {
         public DataContext _dataContext;
+        private readonly LocacaoClient _locacaoClient;
 
         public VeiculoDomain()
         {
             _dataContext = GeradorDeServicos.CarregarContexto();
+            _locacaoClient = new LocacaoClient();
         }
 
         public void Inserir(InserirVeiculoDTO dadosDaInsercao)
@@ -68,6 +70,11 @@ namespace Servicos
             }
 
             veiculo.Status = alteracaoDto.Status;
+
+            if (veiculo.Status == EnumStatusVeiculo.Indisponivel)
+            {
+                _locacaoClient.CancelarLocacoesPorVeiculo(veiculo.Id);
+            }
 
             _dataContext.SaveChanges();
         }
