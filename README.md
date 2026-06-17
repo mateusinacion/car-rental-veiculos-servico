@@ -1,35 +1,35 @@
-# Vehicle Service
+# Serviço de Veículos
 
-Manages vehicle data and availability within the Car Rental system.
+Gerencia os dados e a disponibilidade dos veículos dentro do sistema de Locação de Veículos.
 
-## Role in System
+## Papel no Sistema
 
-The Vehicle Service is responsible for maintaining vehicle information and
-its operational status.
+O Serviço de Veículos é responsável por manter as informações dos veículos e
+o seu status operacional.
 
-It provides availability data to the Rental Service, which uses this
-information to allow or prevent rentals.
+Ele fornece os dados de disponibilidade ao Serviço de Locação, que utiliza essa
+informação para permitir ou impedir locações.
 
-For full system context, refer to the Rental Service repository.
+Para o contexto completo do sistema, consulte o repositório do Serviço de Locação.
 
 ---
 
-## Table: Vehicles
+## Tabela: Veiculos
 
-| Column          | Type   | Description              |
-|-----------------|--------|--------------------------|
-| id              | int    | Unique identifier        |
-| model           | string | Vehicle model name       |
-| license_plate   | string | Vehicle license plate    |
-| renavam_number  | string | Brazilian registration   |
-| status          | int    | Available / Unavailable  |
+| Coluna   | Tipo   | Descrição                       |
+|----------|--------|---------------------------------|
+| Id       | int    | Identificador único             |
+| Modelo   | string | Nome do modelo do veículo       |
+| Placa    | string | Placa do veículo                |
+| Renavam  | string | Registro nacional do veículo    |
+| Status   | int    | Disponível / Indisponível       |
 
 ---
 
 ## Status
 
-- `available` → Vehicle can be rented
-- `unavailable` → Vehicle is rented or under maintenance
+- `Disponivel` → O veículo pode ser locado
+- `Indisponivel` → O veículo está locado ou em manutenção
 
 ---
 
@@ -41,9 +41,9 @@ For full system context, refer to the Rental Service repository.
 - PUT /api/Veiculos/{id}
 - PUT /api/Veiculos/AlterarStatus/{id}
 
-## System Context
+## Contexto do Sistema
 
-This service is part of the Car Rental Microservices System.
+Este serviço faz parte do Sistema de Microsserviços de Locação de Veículos.
 
-The Rental Service is the central service responsible for business rules
-and orchestration.
+O Serviço de Locação é o serviço central, responsável pelas regras de negócio
+e pela orquestração.
